@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    {% if tickets %}
+    {% for ticket in tickets %}
+    <p> {{ticket.name}}
+        {{ticket.phone}}
+        {{ticket.email}}
+        {{ticket.description}}
+        {{ticket.priority}}
+        {{ticket.creation_date}}
+    </p>
+
+    {% endfor %}
+    {% endif %}
+    {% else %}
+    <p>Ничего нет</p>
+    <a href="{% url 'login_view' %}">Login</a>
+    <a href="{% url 'register' %}">Registration</a>
+    {% endif %}
+</body>
+
+</html>
